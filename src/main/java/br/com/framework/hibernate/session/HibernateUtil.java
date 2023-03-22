@@ -85,7 +85,7 @@ public class HibernateUtil implements Serializable {
 		return sessionFactory.openSession();
 
 	}
-	
+
 	/**
 	 * Obtem a conection do provedor de conexões configurado
 	 * 
@@ -93,25 +93,24 @@ public class HibernateUtil implements Serializable {
 	 * @throws SQLException
 	 */
 	public static Connection getConnectionProvider() throws SQLException {
-		
+
 		return ((SessionFactoryImplementor) sessionFactory).getConnectionProvider().getConnection();
-		
+
 	}
-	
+
 	/**
 	 * Obtem a conection do provedor de conexões configurado
 	 * 
 	 * @return Connection no InitialContext java:/comp/env/jdbc/datasource
 	 * @throws Exception
 	 */
-	public static Connection getConnection() throws Exception{
+	public static Connection getConnection() throws Exception {
 		InitialContext context = new InitialContext();
 		DataSource ds = (DataSource) context.lookup(JAVA_COMP_ENV_JDBC_DATA_SOURCE);
 		return ds.getConnection();
-		
-		
+
 	}
-	
+
 	/**
 	 * 
 	 * @return DataSource JNDI Tomcat
@@ -120,6 +119,6 @@ public class HibernateUtil implements Serializable {
 	public DataSource getDataSourceJndi() throws NamingException {
 		InitialContext context = new InitialContext();
 		return (DataSource) context.lookup(VariavelConexaoUtil.JAVA_COMP_ENV_JDBC_DATA_SOURCE);
-		
+
 	}
 }
